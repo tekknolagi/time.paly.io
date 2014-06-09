@@ -1,1 +1,2 @@
-echo "hi"
+$TIME_HOME_DIR$TIME_WORKING_DIR'scripts/stop.sh'
+$TIME_HOME_DIR$TIME_WORKING_DIR'scripts/start.sh'
