@@ -7,7 +7,7 @@ class TimeApp < Grape::API
     { :hello => :world }
   end
 
-  get '/:name' do
+  get '/punch/:name' do
     { :name => params[:name] }
   end
 
