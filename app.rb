@@ -6,4 +6,8 @@ class TimeApp < Grape::API
   get '/' do
     { :hello => :world }
   end
+
+  post '/postreceive' do
+    { :params => params }
+  end
 end
