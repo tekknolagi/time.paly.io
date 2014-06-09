@@ -1,0 +1,9 @@
+/_build
+/deps
+/tmp
+erl_crash.dump
+*~
+*\#*
+bundle
+.bundle
+Gemfile.lock
