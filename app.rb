@@ -8,6 +8,9 @@ class TimeApp < Grape::API
   end
 
   post '/postreceive' do
-    { :params => params }
+    `git pull origin master`
+    `bundle install`
+    `sleep 5`
+    `./scripts/restart.sh`
   end
 end
