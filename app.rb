@@ -7,6 +7,10 @@ class TimeApp < Grape::API
     { :hello => :world }
   end
 
+  get '/:name' do
+    { :name => params[:name] }
+  end
+
   post '/postreceive' do
     `git pull origin master`
     `bundle install`
