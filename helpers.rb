@@ -1,7 +1,7 @@
 require 'time_diff'
 
 def hours_difference punch_in, punch_out
-  return 0 if punch_out == nil
+  punch_out = DateTime.now if punch_out == nil
 
   diff = Time.diff(punch_out, punch_in)
 
