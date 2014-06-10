@@ -31,11 +31,11 @@ class TimeApp < Grape::API
     end
 
     get :days do
-      @user.with_attributes(:days)
+      @user.with_attributes :days
     end
 
     get :stats do
-      @user.with_attributes(:status, :total_hours, :avg_hours_per_day)
+      @user.with_attributes :status, :total_hours, :avg_hours_per_day
     end
 
     get :punch do
