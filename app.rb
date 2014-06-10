@@ -19,7 +19,7 @@ class TimeApp < Grape::API
   group do
     get :days do
       if @user
-        @user.days
+        @user.with_attributes(:days)
       else
         { :error => 'User not found.' }
       end
