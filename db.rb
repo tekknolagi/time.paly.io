@@ -1,7 +1,6 @@
 require 'data_mapper'
 require 'dm-postgres-adapter'
 require './helpers'
-require 'awesome_print'
 
 username = ENV['TIME_USERNAME']
 password = ENV['TIME_PASSWORD']

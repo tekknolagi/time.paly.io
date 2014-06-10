@@ -1,7 +1,6 @@
 require 'grape'
 require './db'
 require './patches'
-require 'awesome_print'
 
 class TimeApp < Grape::API
   format :json
