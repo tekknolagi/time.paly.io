@@ -1,3 +1,5 @@
 require './app'
 
-run TimeApp
+run Rack::URLMap.new {
+  '/api' => TimeApp.new
+}
