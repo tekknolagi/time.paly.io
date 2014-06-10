@@ -20,6 +20,10 @@ class Day
 
   belongs_to :user
 
+  def day
+    pin.strftime('%b %d')
+  end
+
   def time_worked
     hours_difference pin, pout
   end
@@ -33,8 +37,17 @@ class User
 
   has n, :days
 
+  def total_days
+    days.count
+  end
+
   def total_hours
     days.map(&:time_worked).inject(:+)
+  end
+
+  def avg_hours_per_day
+    # total_hours guaranteed to be float
+    total_hours/total_days
   end
 
   def status
