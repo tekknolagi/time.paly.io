@@ -9,6 +9,13 @@ class TimeApp < Grape::API
     { :hello => :world }
   end
 
+  post :postreceive do
+    `git pull origin master`
+    `bundle install`
+    `sleep 5`
+    `./scripts/restart.sh`
+  end
+
   params do
     requires :name, :type => String, :desc => 'Username of puncher.'
   end
@@ -49,12 +56,5 @@ class TimeApp < Grape::API
         { :error => 'User not found.' }
       end
     end
-  end
-
-  post :postreceive do
-    `git pull origin master`
-    `bundle install`
-    `sleep 5`
-    `./scripts/restart.sh`
   end
 end
