@@ -16,14 +16,16 @@ class TimeApp < Grape::API
     `./scripts/restart.sh`
   end
 
-  before do
-    @name = params[:name].downcase
-    @user = User.first :name => @name
-  end
   params do
     requires :name, :type => String, :desc => 'Username of puncher.'
   end
   group do
+    # needs to be inside otherwise it applies globally -.-
+    before do
+      @name = params[:name].downcase
+      @user = User.first :name => @name
+    end
+
     get :days do
       if @user
         @user.with_attributes(:days)
