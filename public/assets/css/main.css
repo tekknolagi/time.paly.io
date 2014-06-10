@@ -37,11 +37,11 @@ table {
 }
 
 /* from github */
-p, blockquote, ul, ol, dl, li, table, pre {
-  margin: 15px 0; }
+p, blockquote, ul, ol, dl, li, pre {
+    margin: 15px 0; }
 
 table {
-  padding: 0; 
+    padding: 0; 
 }
 table tr {
     background-color: white;
