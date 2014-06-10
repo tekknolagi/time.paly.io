@@ -1,1 +1,42 @@
-Hello!
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Punch Time!</title>
+
+    <!-- Vendor -->
+    <script src="/assets/js/vendor/jquery-min.js"></script>
+    <script src="/assets/js/vendor/underscore-min.js"></script>
+    <script src="/assets/js/vendor/backbone-min.js"></script>
+    <script src="/assets/js/vendor/routie-min.js"></script>
+
+    <!-- JS Lib -->
+    <script src="/assets/js/lib.js"></script>
+
+    <!-- Models -->
+    <script src="/assets/js/models/day.js"></script>
+
+    <!-- Views -->
+    <script src="/assets/js/views/day_list.js"></script>
+
+    <!-- Templates -->
+    <script type="template" class="day-list-template">
+      <table>
+	<tr><th>id</th><th>pin</th><th>pout</th></tr>
+      <% _.each(days, function (day) { %>
+        <tr>
+	  <td><%= day.id %></td>
+	  <td><%= day.pin %></td>
+	  <td><%= day.pout %></td>
+	</tr>
+      <% }); %>
+      </table>
+    </script>
+  </head>
+
+  <body>
+    <input id="name" type="text"></input>
+    <div id="container">Loading...</div>
+    <script src="/assets/js/app.js"></script>
+  </body>
+</html>
+
