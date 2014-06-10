@@ -37,7 +37,7 @@ class TimeApp < Grape::API
           :date => d.pin.strftime('%b %d'),
           :pin => d.pin.strftime('%l:%M%P'),
           :pout => d.pout.strftime('%l:%M%P'),
-          :hours => d.time_worked.strftime('%l:%M%P')
+          :hours => d.time_worked
         }
       }
 
