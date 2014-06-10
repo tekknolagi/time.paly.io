@@ -31,7 +31,16 @@ class TimeApp < Grape::API
     end
 
     get :days do
-      @user.with_attributes :days
+      days = @user.days
+      mapped_days = days.map {|d|
+        {
+          :date => d.pin.strftime('%b %d'),
+          :pin => d.pin.strftime('%l:%M%P'),
+          :pout => d.pin.strftime('%l:%M%P')
+        }
+      }
+
+      @user.attributes.merge(:days => mapped_days)
     end
 
     get :stats do
