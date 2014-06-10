@@ -46,7 +46,7 @@ class TimeApp < Grape::API
       if @user
         lastday = @user.days.last
 
-        if !lastday || lastday.pout
+        if lastday == nil || lastday.pout
           Day.create :user => @user, :pin => DateTime.now
         else
           lastday.update! :pout => DateTime.now
