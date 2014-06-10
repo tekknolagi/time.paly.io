@@ -17,6 +17,14 @@ class TimeApp < Grape::API
     @user = User.first :name => @name
   end
   group do
+    get :days do
+      if @user
+        @user.days
+      else
+        { :error => 'User not found.' }
+      end
+    end
+
     get :stats do
       if @user
         @user.with_attributes(:status, :total_hours, :avg_hours_per_day)
