@@ -51,7 +51,7 @@ class TimeApp < Grape::API
     end
   end
 
-  post '/postreceive' do
+  post :postreceive do
     `git pull origin master`
     `bundle install`
     `sleep 5`
