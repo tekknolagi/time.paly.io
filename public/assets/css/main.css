@@ -1,0 +1,16 @@
+.content  {
+    display: table;
+    margin: auto;
+    padding: 10px;
+
+    background-color: #f0f0f0;
+}
+
+.content form {
+    display: table;
+    margin: auto;
+}
+
+.error {
+    color: red;
+}
