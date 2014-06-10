@@ -2,11 +2,23 @@ body {
     background-color: #f0f0f0;
 }
 
+table {
+    display: table;
+}
+
 .content  {
     display: table;
     margin: auto;
     padding: 10px;
     background-color: white;
+
+    border: 1px solid #cccccc;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
 }
 
 .content form {
@@ -36,7 +48,6 @@ table tr:nth-child(2n) {
 }
 table tr th {
     font-weight: bold;
-    border: 1px solid #cccccc;
     text-align: left;
     margin: 0;
     padding: 6px 13px; 
