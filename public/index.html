@@ -31,12 +31,13 @@
     <script type="template" class="day-list-template">
       <table>
 	<h3>Days checked in for <%= name %></h3>
-	<tr><th>Date</th><th>Time in</th><th>Time out</th></tr>
+	<tr><th>Date</th><th>Time in</th><th>Time out</th><th>Hours</th></tr>
 	<% _.each(days, function (day) { %>
         <tr>
 	  <td><%= day.date %></td>
 	  <td><%= day.pin %></td>
 	  <td><%= day.pout %></td>
+	  <td><%= day.hours %></td>
 	</tr>
 	<% }); %>
       </table>
