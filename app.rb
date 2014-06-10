@@ -24,39 +24,31 @@ class TimeApp < Grape::API
     before do
       @name = params[:name].downcase
       @user = User.first :name => @name
+
+      if !@user
+        error! 'User not found'
+      end
     end
 
     get :days do
-      if @user
-        @user.with_attributes(:days)
-      else
-        { :error => 'User not found.' }
-      end
+      @user.with_attributes(:days)
     end
 
     get :stats do
-      if @user
-        @user.with_attributes(:status, :total_hours, :avg_hours_per_day)
-      else
-        { :error => 'User not found.' }
-      end
+      @user.with_attributes(:status, :total_hours, :avg_hours_per_day)
     end
 
     get :punch do
-      if @user
-        lastday = @user.days.last
+      lastday = @user.days.last
 
-        if lastday == nil || lastday.pout
-          Day.create :user => @user, :pin => DateTime.now
-        else
-          lastday.update! :pout => DateTime.now
-        end
-
-        @user.reload
-        @user.with_attributes :status, :total_hours
+      if lastday == nil || lastday.pout
+        Day.create :user => @user, :pin => DateTime.now
       else
-        { :error => 'User not found.' }
+        lastday.update! :pout => DateTime.now
       end
+
+      @user.reload
+      @user.with_attributes :status, :total_hours
     end
   end
 end

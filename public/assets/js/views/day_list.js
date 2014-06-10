@@ -1,4 +1,6 @@
-var DayListView = Backbone.View.extend({
+var DayListView = GenericView.extend({
+    template: '.day-list-template',
+
     initialize: function initializeF (options) {
 	_.bindAll(this, 'render');
 	this.collection = new DayList();
@@ -6,14 +8,13 @@ var DayListView = Backbone.View.extend({
 	var that = this;
 	this.collection.fetch({
 	    data: { name: options.name },
-	    success: that.render
+	    success: that.render,
+	    error: function (collection, response, options) {
+		var parsed = JSON.parse(response.responseText);
+		var errorView = new ErrorView(parsed);
+	    }
 	});
     },
-
-    template: '.day-list-template',
-    renderFrom: function renderFromF () { return $(this.template); },
-    renderTo: function renderToF () { return $('#container'); },
-    fetchTemplate: function fetchTemplateF () { return _.template(this.renderFrom().html()); },
 
     render: function renderF () {
 	var template = this.fetchTemplate();

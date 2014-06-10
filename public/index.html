@@ -16,6 +16,8 @@
     <script src="/assets/js/models/day.js"></script>
 
     <!-- Views -->
+    <script src="/assets/js/views/generic.js"></script>
+    <script src="/assets/js/views/error.js"></script>
     <script src="/assets/js/views/day_list.js"></script>
 
     <!-- Styles -->
@@ -24,26 +26,31 @@
     </style>
 
     <!-- Templates -->
+    <script type="template" class="error-template">
+      <h3 class="error">Error: <%= error %></h3>
+    </script>
+
     <script type="template" class="day-list-template">
       <table>
+	<h3>Days checked in</h3>
 	<tr><th>id</th><th>pin</th><th>pout</th></tr>
-      <% _.each(days, function (day) { %>
+	<% _.each(days, function (day) { %>
         <tr>
 	  <td><%= day.id %></td>
 	  <td><%= day.pin %></td>
 	  <td><%= day.pout %></td>
 	</tr>
-      <% }); %>
+	<% }); %>
       </table>
     </script>
   </head>
 
   <body>
-     <form id="dayform">
-       <input id="dayname" type="text" />
+     <form id="searchform">
+       <input id="searchname" type="text" />
        <input type="submit" />
 
-       <input id="dayclear" type="button" value="Clear" />
+       <input id="searchclear" type="button" value="Clear" />
      </form>
     <div id="container"></div>
     <script src="/assets/js/app.js"></script>

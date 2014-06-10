@@ -3,23 +3,26 @@ $(document).ready(function () {
 	'': function () {
 	    $('#container').html('');
 	},
-	'days/:name': function (name) {
+	'search/:name': function (name) {
 	    new DayListView({ name: name });
 	}
     });
 
-    $('#dayname').focus();
+    var searchForm = $('#searchform');
+    var searchName = $('#searchname');
+    var searchClear = $('#searchclear');
 
-    $('#dayclear').on('click', function (e) {
+    searchName.focus();
+
+    searchClear.on('click', function (e) {
 	routie('');
-	$('#dayname').val('').focus();
+	searchName.val('');
     });
 
-    $('#dayform').on('submit', function (e) {
+    searchForm.on('submit', function (e) {
 	e.preventDefault();
-	var name = $('#dayname');
-	routie('days/'+name.val());
-	name.val('');
+	routie('search/'+searchName.val());
+	searchName.val('');
     });
 
 });
