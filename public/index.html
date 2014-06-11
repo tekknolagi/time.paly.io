@@ -14,11 +14,13 @@
 
     <!-- Models -->
     <script src="/assets/js/models/day.js"></script>
+    <script src="/assets/js/models/stats.js"></script>
 
     <!-- Views -->
     <script src="/assets/js/views/generic.js"></script>
     <script src="/assets/js/views/error.js"></script>
     <script src="/assets/js/views/day_list.js"></script>
+    <script src="/assets/js/views/stats.js"></script>
 
     <!-- Styles -->
     <link rel="stylesheet" href="/assets/css/main.css"></style>
@@ -42,6 +44,14 @@
 	<% }); %>
       </table>
     </script>
+
+    <script type="template" class="stats-template">
+      <table>
+	<tr><td>Status</td><td><%= status %></td></tr>
+	<tr><td>Total hours</td><td><%= total_hours %></td></tr>
+	<tr><td>Avg hours/day</td><td><%= avg_hours_per_day %></td></tr>
+      </table>
+    </script>
   </head>
 
   <body>
@@ -52,7 +62,10 @@
 	
 	<input id="searchclear" type="button" value="Clear" />
       </form>
-      <div id="container"></div>
+      <div id="container">
+	<div id="day-list-view"></div>
+	<div id="stats-view"></div>
+      </div>
       <script src="/assets/js/app.js"></script>
     </div>
   </body>
