@@ -41,11 +41,14 @@ class TimeApp < Grape::API
         }
       }
 
-      @user.attributes.merge(:days => mapped_days)
+      @user.attributes.merge :days => mapped_days
     end
 
     get :stats do
-      @user.with_attributes :status, :total_hours, :avg_hours_per_day
+      h = @user.with_attributes(:status, :total_hours, :avg_hours_per_day)
+      h[:total_hours] = h[:total_hours].round(2)
+      h[:avg_hours_per_day] = h[:avg_hours_per_day].round(2)
+      h
     end
 
     get :punch do
