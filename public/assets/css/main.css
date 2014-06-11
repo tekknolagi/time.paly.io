@@ -4,12 +4,17 @@ body {
 
 table {
     display: table;
-    margin: 0px;
+    margin: 20px;
 
     border-spacing: 0px;
     -webkit-border-horizontal-spacing: 0px;
     -webkit-border-vertical-spacing: 0px;
     border-collapse: collapse;
+}
+
+#name-view {
+    text-align: center;
+    margin: 0px;
 }
 
 .content  {
