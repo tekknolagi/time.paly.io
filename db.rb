@@ -33,6 +33,7 @@ class User
 
   property :id, Serial
   property :name, String
+  property :full_name, String
 
   has n, :days
 
