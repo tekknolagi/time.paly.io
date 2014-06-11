@@ -1,4 +1,5 @@
 var ErrorView = GenericView.extend({
+    el: '#container',
     template: '.error-template',
 
     initialize: function initializeF (options) {

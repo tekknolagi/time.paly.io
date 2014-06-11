@@ -8,9 +8,4 @@ var DayList = Backbone.Collection.extend({
     parse: function parseF (response) {
 	return response.days;
     },
-
-    /*sync: function syncF (method, model, options) {
-	var data = makeAPIRequest(this.url, { name: 'max' });
-	return data;
-    },*/
 });

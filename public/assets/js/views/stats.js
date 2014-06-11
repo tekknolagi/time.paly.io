@@ -1,14 +1,14 @@
-var DayListView = GenericView.extend({
-    el: '#day-list-view',
-    template: '.day-list-template',
+var StatsView = GenericView.extend({
+    el: '#stats-view',
+    template: '.stats-template',
 
     initialize: function initializeF (options) {
 	this.options = options;
 	_.bindAll(this, 'render');
-	this.collection = new DayList();
+	this.model = new Stats();
 
 	var that = this;
-	this.collection.fetch({
+	this.model.fetch({
 	    data: { name: options.name },
 	    success: that.render,
 	    error: function (c, response, o) {
@@ -20,7 +20,7 @@ var DayListView = GenericView.extend({
 
     render: function renderF () {
 	var template = this.fetchTemplate();
-	var data = { name: this.options.name, days: this.collection.toJSON() };
+	var data = this.model.toJSON();
 	var markup = template(data);
 	this.$el.html(markup);
 	return this;
