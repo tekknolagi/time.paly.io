@@ -12,6 +12,9 @@
     <!-- JS Lib -->
     <script src="/assets/js/lib.js"></script>
 
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css"></style>
+
     <!-- Models -->
     <script src="/assets/js/models/day.js"></script>
     <script src="/assets/js/models/stats.js"></script>
@@ -19,20 +22,21 @@
     <!-- Views -->
     <script src="/assets/js/views/generic.js"></script>
     <script src="/assets/js/views/error.js"></script>
+    <script src="/assets/js/views/name.js"></script>
     <script src="/assets/js/views/day_list.js"></script>
     <script src="/assets/js/views/stats.js"></script>
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="/assets/css/main.css"></style>
 
     <!-- Templates -->
     <script type="template" class="error-template">
       <h3 class="error">Error: <%= error %></h3>
     </script>
 
+    <script type="template" class="name-template">
+      <h3 class="name"><%= full_name %></h3>
+    </script>
+
     <script type="template" class="day-list-template">
       <table>
-	<h3>Days checked in for <%= name %></h3>
 	<tr><th>Date</th><th>Time in</th><th>Time out</th><th>Hours</th></tr>
 	<% _.each(days, function (day) { %>
         <tr>
@@ -47,7 +51,6 @@
 
     <script type="template" class="stats-template">
       <table>
-	<h3>Stats for <%= name %></h3>
 	<tr><td>Status</td><td><%= status %></td></tr>
 	<tr><td>Total hours</td><td><%= total_hours %></td></tr>
 	<tr><td>Avg hours/day</td><td><%= avg_hours_per_day %></td></tr>
@@ -64,6 +67,7 @@
 	<input id="searchclear" type="button" value="Clear" />
       </form>
       <div id="container">
+	<div id="name-view"></div>
 	<div id="stats-view"></div>
 	<div id="day-list-view"></div>
       </div>
