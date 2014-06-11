@@ -4,7 +4,7 @@ $(document).ready(function () {
 	    $('#container').html('');
 	},
 	'search/:name': function (name) {
-	    // new DayListView({ name: name });
+	    new DayListView({ name: name });
 	    new StatsView({ name: name });
 	}
     });

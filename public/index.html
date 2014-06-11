@@ -47,6 +47,7 @@
 
     <script type="template" class="stats-template">
       <table>
+	<h3>Stats for <%= name %></h3>
 	<tr><td>Status</td><td><%= status %></td></tr>
 	<tr><td>Total hours</td><td><%= total_hours %></td></tr>
 	<tr><td>Avg hours/day</td><td><%= avg_hours_per_day %></td></tr>
@@ -63,8 +64,8 @@
 	<input id="searchclear" type="button" value="Clear" />
       </form>
       <div id="container">
-	<div id="day-list-view"></div>
 	<div id="stats-view"></div>
+	<div id="day-list-view"></div>
       </div>
       <script src="/assets/js/app.js"></script>
     </div>
