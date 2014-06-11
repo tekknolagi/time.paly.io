@@ -10,7 +10,10 @@ var StatsView = GenericView.extend({
 	var that = this;
 	this.model.fetch({
 	    data: { name: options.name },
-	    success: that.render,
+	    success: function (c, response, a) {
+		var nameView = new NameView(response);
+		that.render();
+	    },
 	    error: function (c, response, o) {
 		var parsed = JSON.parse(response.responseText);
 		var errorView = new ErrorView(parsed);

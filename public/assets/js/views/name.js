@@ -1,6 +1,6 @@
-var ErrorView = GenericView.extend({
-    el: '#container',
-    template: '.error-template',
+var NameView = GenericView.extend({
+    el: '#name-view',
+    template: '.name-template',
 
     initialize: function initializeF (options) {
 	this.options = options;
