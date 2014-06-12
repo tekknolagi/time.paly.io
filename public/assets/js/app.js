@@ -4,26 +4,26 @@ $(document).ready(function () {
 	    $('#container').html('');
 	},
 	'search/:name': function (name) {
-	    new DayListView({ name: name });
 	    new StatsView({ name: name });
+	    new DayListView({ name: name });
 	}
     });
 
-    var searchForm = $('#searchform');
-    var searchName = $('#searchname');
-    var searchClear = $('#searchclear');
+    var searchForm = $('#search-form');
+    var searchName = $('#search-name');
+    var searchClear = $('#search-clear');
 
     searchName.focus();
+
+    searchForm.on('submit', function (e) {
+	e.preventDefault();
+
+	routie('search/'+searchName.val());
+	searchName.val('');
+    });
 
     searchClear.on('click', function (e) {
 	routie('');
 	searchName.val('');
     });
-
-    searchForm.on('submit', function (e) {
-	e.preventDefault();
-	routie('search/'+searchName.val());
-	searchName.val('');
-    });
-
 });

@@ -12,6 +12,7 @@ var StatsView = GenericView.extend({
 	    data: { name: options.name },
 	    success: function (c, response, a) {
 		var nameView = new NameView(response);
+		var punchView = new PunchView(response);
 		that.render();
 	    },
 	    error: function (c, response, o) {

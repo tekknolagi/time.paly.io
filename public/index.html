@@ -22,13 +22,29 @@
     <!-- Views -->
     <script src="/assets/js/views/generic.js"></script>
     <script src="/assets/js/views/error.js"></script>
+    <script src="/assets/js/views/stats.js"></script>
+    <script src="/assets/js/views/punch.js"></script>
     <script src="/assets/js/views/name.js"></script>
     <script src="/assets/js/views/day_list.js"></script>
-    <script src="/assets/js/views/stats.js"></script>
 
     <!-- Templates -->
     <script type="template" class="error-template">
       <h3 class="error">Error: <%= error %></h3>
+    </script>
+
+    <script type="template" class="stats-template">
+      <table>
+	<tr><td>Status</td><td><%= status %></td></tr>
+	<tr><td>Total hours</td><td><%= total_hours %></td></tr>
+	<tr><td>Avg hours/day</td><td><%= avg_hours_per_day %></td></tr>
+      </table>
+    </script>
+
+    <script type="template" class="punch-template">
+      <form id="punch-form">
+	<input type="hidden" name="name" value="<%= name %>" />
+	<button type="button" id="punch-button">Punch <%= opposite_status %></button>
+      </form>
     </script>
 
     <script type="template" class="name-template">
@@ -48,26 +64,19 @@
 	<% }); %>
       </table>
     </script>
-
-    <script type="template" class="stats-template">
-      <table>
-	<tr><td>Status</td><td><%= status %></td></tr>
-	<tr><td>Total hours</td><td><%= total_hours %></td></tr>
-	<tr><td>Avg hours/day</td><td><%= avg_hours_per_day %></td></tr>
-      </table>
-    </script>
   </head>
 
   <body>
     <div class="content">
-      <form id="searchform">
-	<input id="searchname" type="text" placeholder="Enter name" />
+      <form id="search-form">
+	<input id="search-name" type="text" placeholder="Enter name" />
 	<input type="submit" />
 	
-	<input id="searchclear" type="button" value="Clear" />
+	<input id="search-clear" type="button" value="Clear" />
       </form>
       <div id="container">
 	<div id="name-view"></div>
+	<div id="punch-view"></div>
 	<div id="stats-view"></div>
 	<div id="day-list-view"></div>
       </div>
