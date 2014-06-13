@@ -1,13 +1,7 @@
 $(document).ready(function () {
-    routie({
-	'': function () {
-	    $('#container').html('');
-	},
-	'search/:name': function (name) {
-	    new StatsView({ name: name });
-	    new DayListView({ name: name });
-	}
-    });
+    window.app = new AppView();
+    var router = new AppRouter();
+    Backbone.history.start();
 
     var searchForm = $('#search-form');
     var searchName = $('#search-name');
@@ -18,11 +12,13 @@ $(document).ready(function () {
     searchForm.on('submit', function (e) {
 	e.preventDefault();
 
-	routie('search/'+searchName.val());
+	router.navigate('search/' + searchName.val(), { trigger: true });
     });
 
     searchClear.on('click', function (e) {
-	routie('');
+	router.navigate('', { trigger: true });
+
 	searchName.val('');
+	searchName.focus();
     });
 });
