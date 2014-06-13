@@ -19,7 +19,6 @@ $(document).ready(function () {
 	e.preventDefault();
 
 	routie('search/'+searchName.val());
-	searchName.val('');
     });
 
     searchClear.on('click', function (e) {
