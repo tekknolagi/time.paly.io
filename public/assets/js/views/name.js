@@ -1,6 +1,5 @@
 var NameView = GenericView.extend({
-    el: '#name-view',
-    template: '.name-template',
+    name: 'name',
 
     initialize: function initializeF (options) {
 	this.options = options;
@@ -11,7 +10,7 @@ var NameView = GenericView.extend({
 	var template = this.fetchTemplate();
 	var data = this.options;
 	var markup = template(data);
-	this.$el.html(markup);
+	this.theEl().html(markup);
 	return this;
     }
 });

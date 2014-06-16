@@ -1,6 +1,5 @@
 var StatsView = GenericView.extend({
-    el: '#stats-view',
-    template: '.stats-template',
+    name: 'stats',
 
     initialize: function initializeF (options) {
 	this.options = options;
@@ -18,8 +17,13 @@ var StatsView = GenericView.extend({
 		that.render();
 	    },
 	    error: function (c, response, o) {
-		var parsed = JSON.parse(response.responseText);
-		var errorView = new ErrorView(parsed);
+		if (response.responseText == 'undefined') {
+		    var parsed = JSON.parse(response.responseText);
+		    var errorView = new ErrorView(parsed);
+		}
+		else {
+		    var errorView = new ErrorView({ error: 'Unknown error.' });
+		}
 	    }
 	});
     },
@@ -28,7 +32,7 @@ var StatsView = GenericView.extend({
 	var template = this.fetchTemplate();
 	var data = this.model.toJSON();
 	var markup = template(data);
-	this.$el.html(markup);
+	this.theEl().html(markup);
 	return this;
     }
 });

@@ -1,6 +1,5 @@
 var DayListView = GenericView.extend({
-    el: '#day-list-view',
-    template: '.day-list-template',
+    name: 'day-list',
 
     initialize: function initializeF (options) {
 	this.options = options;
@@ -22,7 +21,7 @@ var DayListView = GenericView.extend({
 	var template = this.fetchTemplate();
 	var data = { name: this.options.name, days: this.collection.toJSON() };
 	var markup = template(data);
-	this.$el.html(markup);
+	this.theEl().html(markup);
 	return this;
     }
 });

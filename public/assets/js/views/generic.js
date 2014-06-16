@@ -1,9 +1,23 @@
 var GenericView = Backbone.View.extend({ 
-    renderFrom: function renderFromF () { return $(this.template); },
-    fetchTemplate: function fetchTemplateF () { return _.template(this.renderFrom().html()); },
+    theEl: function theElF () { return $('#' + this.name + '-view'); },
+    template: function templateF () { return $('.' + this.name + '-template'); },
+    fetchTemplate: function fetchTemplateF () { return _.template(this.template().html()); },
+
+    initialize: function initializeF (options) {
+	this.options = options;
+	this.render();	
+    },
+
+    render: function renderF () {
+	var template = this.fetchTemplate();
+	var data = this.options;
+	var markup = template(data);
+	this.theEl().html(markup);
+	return this;
+    },
 
     remove: function removeF () {
-      this.$el.empty();
+      this.theEl().empty();
       this.stopListening();
       return this;
     }

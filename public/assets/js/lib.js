@@ -1,15 +1,6 @@
-var makeAPIRequest = function(action, params) {
-    var response;
-
-    $.ajax({
-	async: false,
-	data: params,
-	url: '/api/' + action,
-	type: 'GET',
-	dataType: 'json'
-    }).then(function(data) {
-	response = data;
+String.prototype.supplant = function (o) {
+    return this.replace(/:([^:]*)/g, function (a, b) {
+        var r = o[b];
+        return typeof r === 'string' || typeof r === 'number' ? r : a;
     });
-
-    return response;
 };

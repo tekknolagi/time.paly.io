@@ -16,7 +16,7 @@ Backbone.View = Backbone.View.extend({
 
     addSubview: function addsubviewF (view) {
 	if (!(view instanceof Backbone.View)) {
-	    throw new Error("Subviews must be a Backbone.View");  
+	    throw new Error("Subviews must be a Backbone.View");
 	}
 	this.subviews.push(view);
 	return view;

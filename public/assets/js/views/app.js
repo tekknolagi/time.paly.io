@@ -1,7 +1,8 @@
 var AppView = GenericView.extend({
     initialize: function initializeF () {
-	for (var i = 0; i < arguments.length; i++) {
-	    this.addSubView(arguments[i]);
-	}
+	/*$('#search-form').on('submit', function (e) {
+	    e.preventDefault();
+	    e.stopPropagation();
+	});*/
     }
 });
