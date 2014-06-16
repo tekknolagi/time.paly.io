@@ -1,5 +1,5 @@
 var GenericView = Backbone.View.extend({ 
-    theEl: function theElF () { return $('#' + this.name + '-view'); },
+    theEl: function theElF () { this.$el = $('#' + this.name + '-view'); return this.$el; },
     template: function templateF () { return $('.' + this.name + '-template'); },
     fetchTemplate: function fetchTemplateF () { return _.template(this.template().html()); },
 
