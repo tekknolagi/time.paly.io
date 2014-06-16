@@ -2,21 +2,13 @@ var SearchView = GenericView.extend({
     name: 'search',
 
     events: {
-	// 'click #search-button': 'sendSearchEvent',
+	'submit #search-form': 'sendSearchEvent',
 	'click #search-clear': 'sendClearEvent'
     },
 
-    initialize: function initializeF () {
-	var that = this;
-	$('#search-form').on('submit', function (e) {
-	    e.preventDefault();
-	    that.sendSearchEvent();
-	});
+    sendSearchEvent: function sendSearchEventF (e) {
+	e.preventDefault();
 
-	this.render();
-    },
-
-    sendSearchEvent: function sendSearchEventF () {
 	var name = $('#search-name').val();
 	router.navigateTo('search', { name: name });
     },

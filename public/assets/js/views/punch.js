@@ -1,26 +1,18 @@
 var PunchView = GenericView.extend({
     name: 'punch',
 
-/*    events: {
+    events: {
 	'submit #punch-form': 'sendPunchEvent'
-    },*/
+    },
 
     initialize: function initializeF (options) {
 	this.options = options;
 	this.options.opposite_status = options.status == 'in' ? 'out' : 'in';
-
-	var that = this;
-	$('#punch-form').on('submit', function (e) {
-	    e.preventDefault();
-	    console.log('howdy');
-	    that.sendPunchEvent();
-	});
-
 	this.render();
     },
 
-    sendPunchEvent: function sendPunchEventF () {
-	console.log('punching');
+    sendPunchEvent: function sendPunchEventF (e) {
+	e.preventDefault();
 
 	var formData = $('#punch-form').serialize();
 	$.get('/api/punch', formData).
