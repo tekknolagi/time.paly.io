@@ -26,6 +26,10 @@ class Day
   def time_worked
     hours_difference pin, pout
   end
+
+  def would_have_worked ppout
+    hours_difference pin, ppout
+  end
 end
 
 class User
@@ -36,6 +40,20 @@ class User
   property :full_name, String
 
   has n, :days
+
+  def table_days
+    days.map do |day|
+      {
+        # Month DayOfMonth
+        :date => day.pin.strftime('%b %d'),
+        # Hour:Minute pm
+        :pin => day.pin.strftime('%l:%M%P'),
+        # Hour:Minute pm
+        :pout => day.pout != nil ? day.pout.strftime('%l:%M%P') : '' ,
+        :hours => day.time_worked.round(2)
+      }
+    end
+  end
 
   def total_days
     days.count
@@ -53,6 +71,19 @@ class User
   def status
     return :in if days.last.pout == nil
     :out
+  end
+
+  def punch
+    lastday = days.last
+
+    if lastday == nil || lastday.pout
+      Day.create :user => self, :pin => DateTime.now
+      # check if checkin time is >= half an hour
+    elsif lastday.would_have_worked(DateTime.now) >= 0.5
+      lastday.update! :pout => DateTime.now
+    else
+      lastday.destroy!
+    end
   end
 end
 

@@ -31,17 +31,7 @@ class TimeApp < Grape::API
     end
 
     get :days do
-      days = @user.days
-      mapped_days = days.map {|d|
-        {
-          :date => d.pin.strftime('%b %d'),
-          :pin => d.pin.strftime('%l:%M%P'),
-          :pout => d.pout != nil ? d.pout.strftime('%l:%M%P') : '' ,
-          :hours => d.time_worked.round(2)
-        }
-      }
-
-      @user.attributes.merge :days => mapped_days
+      @user.with_attributes(:table_days).attribute_replace(:table_days, :days)
     end
 
     get :stats do
@@ -52,16 +42,9 @@ class TimeApp < Grape::API
     end
 
     get :punch do
-      lastday = @user.days.last
-
-      if lastday == nil || lastday.pout
-        Day.create :user => @user, :pin => DateTime.now
-      else
-        lastday.update! :pout => DateTime.now
-      end
-
+      @user.punch
       @user.reload
-      @user.with_attributes :status, :total_hours
+      @user
     end
   end
 end
