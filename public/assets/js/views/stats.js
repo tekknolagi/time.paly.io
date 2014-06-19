@@ -7,7 +7,6 @@ var StatsView = GenericView.extend({
 	this.model = new Stats();
 
 	var that = this;
-	console.log("options in stats: ", options);
 	this.model.fetch({
 	    data: { name: options.name },
 	    success: function (c, response, a) {

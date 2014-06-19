@@ -15,10 +15,8 @@ var PunchView = GenericView.extend({
 	e.preventDefault();
 
 	var formData = $('#punch-form').serialize();
-	console.log(formData);
 	$.get('/api/punch', formData).
 	    success(function (data) {
-		console.log("returned from punch: ", data);
 		var statsView = new StatsView(data);
 		var dayListView = new DayListView(data);
 
