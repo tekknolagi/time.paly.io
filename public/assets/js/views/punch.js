@@ -25,7 +25,7 @@ var PunchView = GenericView.extend({
 		app.addSubviews(statsView, dayListView);
 	    }).
 	    error(function (e) {
-		alert(e);
+		alert(JSON.stringify(e));
 	    });
     }
 });
