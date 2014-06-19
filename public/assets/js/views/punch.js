@@ -2,7 +2,6 @@ var PunchView = GenericView.extend({
     name: 'punch',
 
     events: {
-	'click #punch-button': 'triggerPunchSubmit',
 	'submit #punch-form': 'sendPunchEvent'
     },
 
