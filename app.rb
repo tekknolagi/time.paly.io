@@ -22,6 +22,7 @@ class TimeApp < Grape::API
   group do
     # needs to be inside otherwise it applies globally -.-
     before do
+      puts params
       @name = params[:name].downcase
       @user = User.first :name => @name
 
