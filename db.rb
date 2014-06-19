@@ -37,6 +37,7 @@ class User
 
   property :id, Serial
   property :name, String
+  property :pass, BCryptHash, :lazy => true
   property :full_name, String
 
   has n, :days
@@ -73,7 +74,9 @@ class User
     :out
   end
 
-  def punch
+  def punch test_pass
+    return false if pass != test_pass
+
     lastday = days.last
 
     if lastday == nil || lastday.pout
@@ -84,6 +87,13 @@ class User
     else
       lastday.destroy!
     end
+  end
+
+  # necessary to overwrite, then call with custom arguments
+  alias :oldjson :to_json
+
+  def to_json
+    oldjson :exclude => [ :pass ]
   end
 end
 

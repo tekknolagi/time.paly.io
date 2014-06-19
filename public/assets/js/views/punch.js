@@ -2,6 +2,7 @@ var PunchView = GenericView.extend({
     name: 'punch',
 
     events: {
+	'click #punch-button': 'triggerPunchSubmit',
 	'submit #punch-form': 'sendPunchEvent'
     },
 
@@ -9,6 +10,10 @@ var PunchView = GenericView.extend({
 	this.options = options;
 	this.options.opposite_status = options.status == 'in' ? 'out' : 'in';
 	this.render();
+    },
+
+    triggerPunchSubmit: function triggerPunchSubmitF () {
+	$('#punch-form').submit();
     },
 
     sendPunchEvent: function sendPunchEventF (e) {
@@ -23,7 +28,7 @@ var PunchView = GenericView.extend({
 		app.addSubviews(statsView, dayListView);
 	    }).
 	    error(function (e) {
-		alert(e)
+		alert(e);
 	    });
     }
 });

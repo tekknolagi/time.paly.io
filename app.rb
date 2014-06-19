@@ -41,8 +41,13 @@ class TimeApp < Grape::API
       h
     end
 
+    params do
+      requires :pass, :type => String, :desc => 'User password.'
+    end
     get :punch do
-      @user.punch
+      res = @user.punch params[:pass]
+      return { :error => 'Incorrect password.' } if not res
+
       @user.reload
       @user
     end
