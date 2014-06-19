@@ -9,6 +9,14 @@ class TimeApp < Grape::API
     { :hello => :world }
   end
 
+  get :users do
+    # can't just do a User.all.to_json due to monkey-patching
+    # - there has to be a cleaner way to exclude fields from results
+    User.all.map do |user|
+      user.attributes.except :pass
+    end
+  end
+
   post :postreceive do
     `git pull origin master`
     `bundle install`

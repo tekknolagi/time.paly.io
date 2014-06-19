@@ -27,7 +27,9 @@ var AppRouter = Backbone.Router.extend({
     blank: function blankF () {
 	this.app.removeSubviews();
 	var searchView = new SearchView();
-	app.addSubview(searchView);
+	var userListView = new UserListView();
+
+	app.addSubviews(searchView, userListView);
     },
 
     search: function searchF (name) {

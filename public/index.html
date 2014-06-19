@@ -18,6 +18,7 @@
     <script src="/assets/js/router.js"></script>
 
     <!-- Models -->
+    <script src="/assets/js/models/user.js"></script>
     <script src="/assets/js/models/day.js"></script>
     <script src="/assets/js/models/stats.js"></script>
 
@@ -30,6 +31,7 @@
     <script src="/assets/js/views/punch.js"></script>
     <script src="/assets/js/views/name.js"></script>
     <script src="/assets/js/views/search.js"></script>
+    <script src="/assets/js/views/user_list.js"></script>
     <script src="/assets/js/views/day_list.js"></script>
 
     <!-- Templates -->
@@ -65,6 +67,17 @@
 	<input id="search-clear" type="button" value="Clear" />
       </form>      
     </script>
+
+    <script type="template" class="user-list-template">
+      <form id="user-list-form">
+	<select id="user-list-picker">
+	  <% _.each(users, function (user) { %>
+	  <option><%= user.name %></option>
+	  <% }); %>
+	</select>
+	<input id="user-list-button" type="submit" />
+      </form>
+    </script>
     
     <script type="template" class="day-list-template">
       <table>
@@ -86,6 +99,7 @@
       <div id="container">
 	<div id="error-view">
 	  <div id="search-view"></div>
+	  <div id="user-list-view"></div>
 	  <div id="name-view"></div>
 	  <div id="punch-view"></div>
 	  <div id="stats-view"></div>

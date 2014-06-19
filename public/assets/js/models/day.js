@@ -1,5 +1,4 @@
-var Day = Backbone.Model.extend({
-});
+var Day = Backbone.Model.extend({});
 
 var DayList = Backbone.Collection.extend({
     model: Day,
