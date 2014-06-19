@@ -46,7 +46,7 @@ class TimeApp < Grape::API
     end
     get :punch do
       res = @user.punch params[:pass]
-      return { :error => 'Incorrect password.' } if not res
+      error!('Incorrect password.') if not res
 
       @user.reload
       @user
