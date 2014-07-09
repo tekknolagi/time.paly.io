@@ -28,7 +28,7 @@ var SearchView = GenericView.extend({
 	var template = this.fetchTemplate();
 	var data = this.options;
 	var markup = template(data);
-	this.El().html(markup);
+	this.theEl().html(markup);
 	return this;
     },
 
