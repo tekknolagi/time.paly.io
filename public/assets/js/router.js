@@ -31,7 +31,7 @@ var AppRouter = Backbone.Router.extend({
     },
 
     search: function searchF (name) {
-	var searchView = new SearchView();
+	var searchView = new SearchView({ name: name });
 	var statsView = new StatsView({ name: name });
 	var dayListView = new DayListView({ name: name });
 

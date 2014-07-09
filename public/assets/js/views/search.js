@@ -6,6 +6,11 @@ var SearchView = GenericView.extend({
 	'click #search-clear': 'sendClearEvent'
     },
 
+    initialize: function initializeF (options) {
+	this.options = options;
+	this.render();
+    },
+
     sendSearchEvent: function sendSearchEventF (e) {
 	e.preventDefault();
 
@@ -17,6 +22,14 @@ var SearchView = GenericView.extend({
 	router.navigateTo('blank');
 	searchName.val('');
 	searchName.focus();
+    },
+
+    render: function renderF () {
+	var template = this.fetchTemplate();
+	var data = this.options;
+	var markup = template(data);
+	this.El().html(markup);
+	return this;
     },
 
     remove: function removeF () {
