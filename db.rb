@@ -100,11 +100,13 @@ class User
     end
   end
 
-  # necessary to overwrite, then call with custom arguments
-  alias :oldjson :to_json
+  def to_json options={}
+    options[:exclude] ||= [ :pass ]
+    super options
+  end
 
-  def to_json
-    oldjson :exclude => [ :pass ]
+  def attributes
+    super.except :pass
   end
 end
 
