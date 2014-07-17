@@ -60,13 +60,17 @@ class User
     days.count
   end
 
+  def total_weeks
+    weeks.count
+  end
+
   def total_hours
     days.map(&:time_worked).inject(:+)
   end
 
   def avg_hours_per_day
     # total_hours guaranteed to be float
-    total_hours/total_days
+    total_hours / total_days
   end
 
   def weeks
@@ -77,7 +81,7 @@ class User
   end
 
   def avg_hours_per_week
-    total_hours / weeks.length
+    total_hours / total_weeks
   end
 
   def status
