@@ -69,6 +69,17 @@ class User
     total_hours/total_days
   end
 
+  def weeks
+    days.group_by do |day|
+      date = day.pin.to_date
+      (date - date.wday + 1)
+    end
+  end
+
+  def avg_hours_per_week
+    total_hours / weeks.length
+  end
+
   def status
     return :in if days.last.pout == nil
     :out
